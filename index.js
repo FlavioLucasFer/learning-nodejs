@@ -1,26 +1,23 @@
 const express = require('express');
+const handlebars = require('express-handlebars');
+const Sequelize = require('sequelize');
 
 const app = express();
 const port = 8081;
 
-// Main route of app
-app.get('/', (req, res) => {
-	// send can only be used 1 time 
-	// inside route callback
-	res.send("Welcome to my app!");
+// config
+// template engine
+app.engine('handlebars', handlebars({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+// mysql database connection
+const sequelize = new Sequelize('test', 'node', '123456', {
+	host: 'localhost',
+	dialect: 'mysql',
 });
 
-// All routes must start with "/"
-app.get('/blog', (req, res) => {
-	res.send("Welcome to my blog");
-});
-
-// :/ indicates route parameter
-// so, the route /hello doesnt exists
-// without the parameter, that can be anything
-// provided by user on url
-app.get('/hello/:name', (req, res) => {
-	res.send(`hello ${req.params.name}`);
+// routes
+app.get('/cad', (req, res) => {
+	res.render('form'); // Render a html file
 });
 
 // listen function open the server
