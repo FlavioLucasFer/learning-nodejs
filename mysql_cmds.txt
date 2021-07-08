@@ -1,0 +1,64 @@
+**OBS: on Ubuntu all commands below needs "sudo" keyword before the command
+
+<--MYSQL COMMANDS-->
+
+## cmd to check if mysql is running ##
+mysqladmin -u user -p status
+-u -> to indicate user
+-p -> to mysql request user password after enter pressed
+status -> to check mysql server status
+ex: mysqladmin -u root -p status
+
+## cmd to run mysql on Ubuntu
+sudo service mysql start (exchange "start" by "restart" if you wanna restart server instead start)
+
+## cmd to connect to mysql server ##
+mysql -h server_name -u user -p
+-h -> to indicate server 
+-u -> to indicate user
+-p -> to mysql request user password after enter pressed
+ex: mysql -h localhost -u root -p
+
+<--MYSQL MONITOR COMMANDS-->
+**OBS: all mysql cmds requires ";" at the end
+**OBS: commands can be written in uppercase or lowercase or even a mixture of uppercase and lowercase (VERY BAD PRACTICE... but you can do it if you want)
+
+## cmd to show all databases
+SHOW DATABASES;
+
+## cmd to create a new database
+CREATE DATABASE database_name;
+ex: CREATE DATABASE monicare;
+
+## cmd to select a database to use
+USE database_name;
+ex: USE monicare;
+
+## cmd to show all tables of select database
+SHOW TABLES;
+
+## cmd to describe table structure
+DESCRIBE table_name;
+ex: DESCRIBE users;
+
+## cmd to create user
+**OBS: If you do not want to restrict the user to one ip address/host in mysql you can use the percentage symbol
+
+CREATE USER 'user_name'@'ip_address/host' IDENTIFIED BY 'user_password';
+ex: CREATE USER 'teste'@'localhost' IDENTIFIED BY '123456';
+
+## cmd to delete user
+DROP USER 'user_name'@'ip_address/host';
+ex: DROP USER 'test'@'localhost';
+
+## cmd to give privileges to user
+**OBS: you can specify privileges like insert, update or delete if don't want to give all privileges to user
+**OBS: you can give privileges to all databases passing "*.*" instead "database_name.*"
+
+GRANT ALL PRIVILEGES ON database_name.* TO 'user_name'@'ip_address/host';
+FLUSH PRIVILEGES;
+ex: 
+	GRANT ALL PRIVILEGES ON test_db.* TO 'test'@'%';
+	FLUSH PRIVILEGES;
+
+
