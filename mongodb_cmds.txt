@@ -1,0 +1,30 @@
+## Installation on Ubuntu
+sudo apt install mongodb
+
+## Verify mongodb status
+sudo systemctl status mongodb
+
+## Start mongodb
+sudo systemctl start mongodb
+
+## Stop mongodb
+sudo systemctl stop mongodb
+
+## Restart mongodb
+sudo systemctl restart mongodb
+
+## Enable mongodb to start when OS boot
+--OBS: By default mongodb is enable to start when OS boot
+
+sudo systemctl enable mongodb
+
+## Disable mongodb to start when OS boot
+sudo systemctl disable mongodb
+
+## Start mongodb shell
+sudo mongo
+
+## Uninstall mongodb
+sudo systemctl stop mongodb
+sudo apt purge mongodb
+sudo apt autoremove

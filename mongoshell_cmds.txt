@@ -1,0 +1,13 @@
+## Show all databases
+show databases;
+
+## Show all colections
+show collections;
+
+## Create database
+use database_name; 
+ex: use monicare;
+
+## Show all data from collection
+db.collection_name.find();
+ex: db.users.find();
